@@ -32,17 +32,17 @@ class ViewController: UIViewController {
         //
         if(itemName.text != "" || quantity.text != "" || moreInfo.text != ""){
             if (existingItem != nil) {
-                existingItem.setValue(itemName.text as String, forKey: "item")
-                existingItem.setValue(quantity.text as String, forKey: "quantity")
-                existingItem.setValue(moreInfo.text as String, forKey: "info")
+                existingItem.setValue(itemName.text! as String, forKey: "item")
+                existingItem.setValue(quantity.text! as String, forKey: "quantity")
+                existingItem.setValue(moreInfo.text! as String, forKey: "info")
                 print(existingItem)
                 print("Update current data")
             } else {
-                var newItem = Model(entity: entity!, insertIntoManagedObjectContext: context)
+                let newItem = Model(entity: entity!, insertIntoManagedObjectContext: context)
                 //map the our properties
-                newItem.item = itemName.text
-                newItem.quantity = quantity.text
-                newItem.info = moreInfo.text
+                newItem.item = itemName.text!
+                newItem.quantity = quantity.text!
+                newItem.info = moreInfo.text!
                 print(newItem)
                 print("New Item Added")
             }
@@ -55,8 +55,9 @@ class ViewController: UIViewController {
                 var error : NSError? = nil
                 do {
                     try context.save()
-                } catch var error1 as NSError {
+                } catch let error1 as NSError {
                     error = error1
+                    print(error)
                     abort()
                 }
             }

@@ -90,6 +90,7 @@ class ListTableViewController: UITableViewController {
                 try context.save()
             } catch let error1 as NSError {
                 error = error1
+                print(error)
                 abort()
             }
         }
