@@ -25,44 +25,45 @@ class ListTableViewController: UITableViewController {
         myList = try! context.executeFetchRequest(freq)
         tableView.reloadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return myList.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let CellID : String  = "Cell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellID, forIndexPath: indexPath) 
-
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellID, forIndexPath: indexPath)
+        
         // Configure the cell...
         if indexPath != 0 {
             let data : NSManagedObject = myList[indexPath.row] as! NSManagedObject
-            cell.textLabel?.text = data.valueForKeyPath("item") as? String
-            let qnt = data.valueForKeyPath("quantity") as? String
-            let info = data.valueForKeyPath("info") as? String
-            cell.detailTextLabel?.text = "\(qnt!) item/s - \(info!)"
+            let item = data.valueForKeyPath("item") as! String
+            let qnt = data.valueForKeyPath("quantity") as! String
+            let info = data.valueForKeyPath("info") as! String
+            cell.textLabel?.text = "Buy \(qnt) \(item)"
+            cell.detailTextLabel?.text = "\(info)"
         }
         return cell
     }
     
-
+    
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -70,7 +71,7 @@ class ListTableViewController: UITableViewController {
         return true
     }
     
-
+    
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -79,7 +80,7 @@ class ListTableViewController: UITableViewController {
         let context : NSManagedObjectContext = appDel.managedObjectContext!
         
         if editingStyle == .Delete {
-           
+            //remove the row from array and delete from the NSManagedObject
             context.deleteObject(myList[indexPath.row] as! NSManagedObject)
             myList.removeAtIndex(indexPath.row)
             // Delete the row from the data source
@@ -97,25 +98,8 @@ class ListTableViewController: UITableViewController {
         
     }
     
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
@@ -132,5 +116,5 @@ class ListTableViewController: UITableViewController {
         }
     }
     
-
+    
 }

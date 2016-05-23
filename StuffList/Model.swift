@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 @objc(model)
+
 class Model: NSManagedObject {
     
     //properties feeding the attritbutes with the entity

@@ -24,21 +24,24 @@ class ViewController: UIViewController {
     override func viewDidDisappear(animated: Bool) {
         
         //reference to out app delegate
-        let appDel : AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let appDel = (UIApplication.sharedApplication().delegate as! AppDelegate)
         //reference to context
-        let context : NSManagedObjectContext = appDel.managedObjectContext!
-        let entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)
+        let context = appDel.managedObjectContext!
+        let entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)!
         
-        //
+        //If the user has added text in the field this clause will run,
+        //if it has data it will update it else add a new item into database.
+        //If text are empty then it will not save and if existing item data are removed
+        //it will delete the item from database.
         if(itemName.text != "" || quantity.text != "" || moreInfo.text != ""){
             if (existingItem != nil) {
                 existingItem.setValue(itemName.text! as String, forKey: "item")
                 existingItem.setValue(quantity.text! as String, forKey: "quantity")
                 existingItem.setValue(moreInfo.text! as String, forKey: "info")
                 print(existingItem)
-                print("Update current data")
+                print("Update existingItem data")
             } else {
-                let newItem = Model(entity: entity!, insertIntoManagedObjectContext: context)
+                let newItem = Model(entity: entity, insertIntoManagedObjectContext: context)
                 //map the our properties
                 newItem.item = itemName.text!
                 newItem.quantity = quantity.text!
@@ -67,10 +70,12 @@ class ViewController: UIViewController {
         do {
             //save the context
             try context.save()
-        } catch _ {
+        } catch let error as NSError {
+            print(error)
+            abort()
         }
         
-        //navigate to table view
+        //navigate back to table view
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -84,12 +89,6 @@ class ViewController: UIViewController {
             moreInfo.text = info
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
 
