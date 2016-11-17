@@ -18,41 +18,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Lf-9s-yfm">
-                                <rect key="frame" x="42" y="105" width="516" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sv9-uc-0YK">
+                                <rect key="frame" x="150" y="109" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Npk-dY-Yl3"/>
+                                    <constraint firstAttribute="width" constant="300" id="tKg-wm-IBU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W3a-Hr-OqS">
-                                <rect key="frame" x="42" y="156" width="516" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bjB-2X-5Mu">
+                                <rect key="frame" x="150" y="164" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="1JU-VX-woX"/>
+                                    <constraint firstAttribute="height" constant="30" id="f6z-NJ-1nE"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="More Info" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uhk-Oy-3e1">
-                                <rect key="frame" x="42" y="208" width="516" height="30"/>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="X5k-yE-nRB">
+                                <rect key="frame" x="356" y="164" width="94" height="29"/>
+                            </stepper>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I9w-M6-IQb">
+                                <rect key="frame" x="150" y="219" width="300" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6Lf-9s-yfm" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="41" id="BGX-3O-aOp"/>
-                            <constraint firstItem="W3a-Hr-OqS" firstAttribute="leading" secondItem="uhk-Oy-3e1" secondAttribute="leading" id="Jm1-Mt-6n7"/>
-                            <constraint firstItem="W3a-Hr-OqS" firstAttribute="leading" secondItem="6Lf-9s-yfm" secondAttribute="leading" id="MoV-pl-VHf"/>
-                            <constraint firstItem="uhk-Oy-3e1" firstAttribute="top" secondItem="W3a-Hr-OqS" secondAttribute="bottom" constant="22" id="Wdh-QC-zKT"/>
-                            <constraint firstItem="W3a-Hr-OqS" firstAttribute="top" secondItem="6Lf-9s-yfm" secondAttribute="bottom" constant="21" id="bOd-sR-t2G"/>
-                            <constraint firstItem="6Lf-9s-yfm" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="qRK-AA-FPZ"/>
-                            <constraint firstItem="6Lf-9s-yfm" firstAttribute="trailing" secondItem="W3a-Hr-OqS" secondAttribute="trailing" id="rtN-af-O47"/>
-                            <constraint firstItem="6Lf-9s-yfm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="22" id="wxf-ed-o8M"/>
-                            <constraint firstItem="W3a-Hr-OqS" firstAttribute="trailing" secondItem="uhk-Oy-3e1" secondAttribute="trailing" id="xdn-tF-GCS"/>
+                            <constraint firstItem="X5k-yE-nRB" firstAttribute="leading" secondItem="bjB-2X-5Mu" secondAttribute="trailing" constant="6" id="3QS-G0-ufD"/>
+                            <constraint firstItem="bjB-2X-5Mu" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="130" id="7sY-4x-SBP"/>
+                            <constraint firstItem="I9w-M6-IQb" firstAttribute="top" secondItem="bjB-2X-5Mu" secondAttribute="bottom" constant="25" id="CFy-GU-K6R"/>
+                            <constraint firstItem="sv9-uc-0YK" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="130" id="H5d-aT-Uzp"/>
+                            <constraint firstItem="X5k-yE-nRB" firstAttribute="top" secondItem="sv9-uc-0YK" secondAttribute="bottom" constant="25" id="Ici-qb-f39"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sv9-uc-0YK" secondAttribute="trailing" constant="130" id="KNg-Ms-ZfM"/>
+                            <constraint firstItem="sv9-uc-0YK" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="45" id="RAO-nF-9yq"/>
+                            <constraint firstItem="bjB-2X-5Mu" firstAttribute="top" secondItem="sv9-uc-0YK" secondAttribute="bottom" constant="25" id="WPt-YG-EMu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="I9w-M6-IQb" secondAttribute="trailing" constant="130" id="c7r-4v-ql0"/>
+                            <constraint firstItem="I9w-M6-IQb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="130" id="gPO-JN-LdS"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="itemName" destination="6Lf-9s-yfm" id="pmC-3S-DzD"/>
-                        <outlet property="moreInfo" destination="uhk-Oy-3e1" id="75d-Rd-ZRu"/>
-                        <outlet property="quantity" destination="W3a-Hr-OqS" id="WxV-2e-rfU"/>
+                        <outlet property="itemName" destination="sv9-uc-0YK" id="HCe-KY-Zf0"/>
+                        <outlet property="moreInfo" destination="I9w-M6-IQb" id="0RA-sl-3bV"/>
+                        <outlet property="quantity" destination="bjB-2X-5Mu" id="FL0-xN-71E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

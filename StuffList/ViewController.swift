@@ -15,9 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var quantity: UITextField!
     @IBOutlet weak var moreInfo: UITextField!
     
-    var item : String = ""
-    var qnt : String = ""
-    var info : String = ""
+    var item = ""
+    var qnt = ""
+    var info = ""
     
     var existingItem : NSManagedObject!
     
@@ -55,12 +55,10 @@ class ViewController: UIViewController {
             if (existingItem != nil){
                 print("Delete item")
                 context.deleteObject(existingItem)
-                var error : NSError? = nil
                 do {
                     try context.save()
-                } catch let error1 as NSError {
-                    error = error1
-                    print(error)
+                } catch let error as NSError {
+                    print("Cannot delete item: \(error)")
                     abort()
                 }
             }
