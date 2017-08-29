@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     override func viewDidDisappear(animated: Bool) {
         
         // Reference to out app delegate
-        let appDel = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let appDel = UIApplication.sharedApplication().delegate // as! AppDelegate
         //reference to context
         let context = appDel.managedObjectContext!
         let entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)!
