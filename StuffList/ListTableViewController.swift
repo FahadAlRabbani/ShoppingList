@@ -54,9 +54,9 @@ class ListTableViewController: UITableViewController {
         // Configure the cell...
         if indexPath != 0 {
             let data : NSManagedObject = myList[indexPath.row] as! NSManagedObject
-            let item = data.valueForKeyPath("item") as! String
-            let qnt = data.valueForKeyPath("quantity") as! String
-            let info = data.valueForKeyPath("info") as! String
+            let item = data.valueForKeyPath("item")  // as! String
+            let qnt = data.valueForKeyPath("quantity") // as! String
+            let info = data.valueForKeyPath("info") // as! String
             cell.textLabel?.text = "Buy \(qnt) \(item)"
             cell.detailTextLabel?.text = "\(info)"
         }
@@ -80,7 +80,7 @@ class ListTableViewController: UITableViewController {
         let context : NSManagedObjectContext = appDel.managedObjectContext!
         
         if editingStyle == .Delete {
-            //remove the row from array and delete from the NSManagedObject
+            // Remove the row from array and delete from the NSManagedObject
             context.deleteObject(myList[indexPath.row] as! NSManagedObject)
             myList.removeAtIndex(indexPath.row)
             // Delete the row from the data source
