@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-    //outlets for the textfield
+    // Outlets for the textfield
     @IBOutlet weak var itemName: UITextField!
     @IBOutlet weak var quantity: UITextField!
     @IBOutlet weak var moreInfo: UITextField!
@@ -23,16 +23,16 @@ class ViewController: UIViewController {
     
     override func viewDidDisappear(animated: Bool) {
         
-        //reference to out app delegate
+        // Reference to out app delegate
         let appDel = (UIApplication.sharedApplication().delegate as! AppDelegate)
         //reference to context
         let context = appDel.managedObjectContext!
         let entity = NSEntityDescription.entityForName("List", inManagedObjectContext: context)!
         
-        //If the user has added text in the field this clause will run,
-        //if it has data it will update it else add a new item into database.
-        //If text are empty then it will not save and if existing item data are removed
-        //it will delete the item from database.
+        // If the user has added text in the field this clause will run,
+        // if it has data it will update it else add a new item into database.
+        // If text are empty then it will not save and if existing item data are removed
+        // it will delete the item from database.
         if(itemName.text != "" || quantity.text != "" || moreInfo.text != ""){
             if (existingItem != nil) {
                 existingItem.setValue(itemName.text! as String, forKey: "item")
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
                 print("Update existingItem data")
             } else {
                 let newItem = Model(entity: entity, insertIntoManagedObjectContext: context)
-                //map the our properties
+                // Map the our properties
                 newItem.item = itemName.text!
                 newItem.quantity = quantity.text!
                 newItem.info = moreInfo.text!
@@ -68,14 +68,14 @@ class ViewController: UIViewController {
         }
         
         do {
-            //save the context
+            // Save the context
             try context.save()
         } catch let error as NSError {
             print(error)
             abort()
         }
         
-        //navigate back to table view
+        // Navigate back to table view
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
